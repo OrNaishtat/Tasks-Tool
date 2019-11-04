@@ -24,7 +24,11 @@ deco_time=3
 
 function task_1(){
 for f in *.ext; do mv "$f" "$(echo "$f" | sed s/ext/newext/)"; done
+if [[ $? -ne 0 ]]; then 
+echo "Failed, please check if apropriate files exist in folder"
+fi
 }
+
 
 function task_2(){
 echo "Total %CPU used:"
@@ -47,8 +51,7 @@ rpm -qf /bin/bash
 }
 
 function task_5(){
-hostnamectl | grep "Operating System"
-hostnamectl | grep "Kernel"
+uname -a
 }
 
 ## User Interaction ##
